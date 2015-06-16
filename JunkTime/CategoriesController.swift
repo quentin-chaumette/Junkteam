@@ -20,6 +20,10 @@ class CategoriesController: UITableViewController {
 		var categoriesListFromUserDefaults:NSMutableArray? = userDefaults.objectForKey("categoryList") as? NSMutableArray
 		
 		var sessionsList:NSMutableArray? = userDefaults.objectForKey("sessionsList") as? NSMutableArray
+	
+		var tasksList:NSMutableArray? = userDefaults.objectForKey("tasksList") as? NSMutableArray
+		
+
 		
 		if ((categoriesListFromUserDefaults) != nil){
 			categoriesItems = categoriesListFromUserDefaults!

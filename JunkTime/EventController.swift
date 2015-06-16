@@ -15,6 +15,12 @@ class EventController: UITableViewController {
 	var CategoryContainer:String = String()
 	var TaskContainer:String = String()
 	
+	@IBOutlet var numberOfEvents: UILabel!
+	
+	@IBOutlet var totalTimeOfThisTask: UILabel!
+	
+	@IBOutlet var taskDateOfCreation: UILabel!
+	
 	@IBOutlet var SessionTitle: UITextField! = UITextField()
 	
 	var sessionsList:NSMutableArray = NSMutableArray()
@@ -43,12 +49,14 @@ class EventController: UITableViewController {
 		
 		// ————––––––– SESSIONS FILTER : TREATMENT TO DISPLAY ONLY SESSIONS OF THE TASK/EVENT ––––––––––––––
 		
-		var belongToThisTask = TasksData.objectForKey("taskTitle") as? String
-		
-		for session in sessionsListNotFiltered {
-			var sessionTaskNotFiltered = session.objectForKey("taskOfThisSession") as? String
+		var thisTask = TasksData.objectForKey("taskTitle") as? String
+		var thisCategory = TasksData.objectForKey("categoryOfThisTask") as? String
 			
-			if (sessionTaskNotFiltered == belongToThisTask){
+		for session in sessionsListNotFiltered {
+			var taskOfThisSession = session.objectForKey("taskOfThisSession") as? String
+			var categoryOfThisSession = session.objectForKey("categoryOfThisSession") as? String
+			
+			if (taskOfThisSession == thisTask && categoryOfThisSession == thisCategory){
 				sessionsList.addObject(session)										  // we create a new list of filtered tasks (wich belong to the category)
 			}
 		}

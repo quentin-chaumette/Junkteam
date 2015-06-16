@@ -209,6 +209,9 @@
                         </barButtonItem>
                     </navigationItem>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <connections>
+                        <outlet property="categoryTotalTime" destination="nEK-am-l0W" id="263-lK-Dd3"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yP0-5G-WGc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -329,9 +332,12 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
                         <outlet property="SessionTitle" destination="Jxd-pn-dCS" id="0H0-Ey-8qG"/>
+                        <outlet property="numberOfEvents" destination="6tV-md-9Iu" id="Pog-1B-CAS"/>
                         <outlet property="numericDisplay" destination="53V-ew-ISL" id="ts4-IK-gDD"/>
                         <outlet property="saveButton" destination="MUj-Zp-A5l" id="Qah-ic-Gjb"/>
                         <outlet property="startStopButton" destination="xWG-MW-GFg" id="RTr-fk-l9m"/>
+                        <outlet property="taskDateOfCreation" destination="DFC-11-iWA" id="wsW-JP-rmx"/>
+                        <outlet property="totalTimeOfThisTask" destination="pEF-3r-qCX" id="nbm-ot-01K"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6Wv-Qm-WuW" userLabel="First Responder" sceneMemberID="firstResponder"/>

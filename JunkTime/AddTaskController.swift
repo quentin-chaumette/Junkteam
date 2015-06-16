@@ -40,7 +40,6 @@ class AddTaskController: UIViewController {
 		dataSet.setObject(CategoryContainer, forKey: "categoryOfThisTask")
 		dataSet.setObject(taskTime, forKey: "taskTime")
 		
-		println(dataSet)
 				
 		if ((tasksList) != nil){	  // data already available
 			var newMutableList:NSMutableArray = NSMutableArray()
