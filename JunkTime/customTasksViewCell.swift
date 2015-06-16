@@ -21,15 +21,14 @@ class customTasksViewCell: UITableViewCell {
 		return dateFormatter.stringFromDate(date)
 	}
 	
-	func configureCellWith(taskItem:NSDictionary){
+	func configureCellWith(taskItem:NSDictionary, taskTotalTime:Int){
 		
 		customTaskTitle.text = taskItem.objectForKey("taskTitle") as? String
 		
 		customTaskDate.text = dateformatterDate(taskItem.objectForKey("dateOfTaskCreation") as! NSDate) as String
 		
-		//customCategoryTime.text = taskItem.objectForKey("taskTime") as? String
-		
-		customTaskTime.text = "00:00:00"
+		var str = "\(taskTotalTime)"		
+		customTaskTime.text = str
 		
 	}
 	

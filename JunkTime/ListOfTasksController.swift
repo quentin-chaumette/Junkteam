@@ -18,9 +18,9 @@ class ListOfTasksController: UITableViewController {
 	
 	var tasksListNotFiltered:NSMutableArray = NSMutableArray()
 	
+	var taskTotalTime = 0
 	
-	
-	
+	var sessionsList:NSMutableArray=NSMutableArray()
 	
 	override func viewDidAppear(animated: Bool) {
 
@@ -78,12 +78,28 @@ class ListOfTasksController: UITableViewController {
 	override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
 		let cell = tableView.dequeueReusableCellWithIdentifier("taskCell", forIndexPath: indexPath) as! customTasksViewCell
 		
-
-		
 		var taskItem:NSDictionary = tasksList.objectAtIndex(indexPath.row) as! NSDictionary
 
-		cell.configureCellWith(taskItem)
+		// ————––––––– CALCULATE TOTAL TIME OF CATEGORY ––––––––––––––
+		taskTotalTime = 0
+		var userDefaults:NSUserDefaults = NSUserDefaults.standardUserDefaults()
 		
+		if let abc = (userDefaults.objectForKey("sessionsList") as? NSMutableArray){
+			sessionsList = userDefaults.objectForKey("sessionsList") as! NSMutableArray
+			var taskTitle = taskItem.objectForKey("taskTitle") as? String
+			
+			for session in  sessionsList{
+				var taskCategoryNotFiltered = session.objectForKey("taskOfThisSession") as? String
+				
+				if (taskCategoryNotFiltered == taskTitle){
+					taskTotalTime += Int(session.objectForKey("sessionTime") as! CFTimeInterval)
+				}
+				else{	}
+			}
+		}
+		// ————––––––––————–––––––————–––––––————–––––––————–––––––————–––––––—––
+		
+		cell.configureCellWith(taskItem, taskTotalTime: taskTotalTime)
 		
 		  return cell
 	}
@@ -133,7 +149,7 @@ class ListOfTasksController: UITableViewController {
 			var selectedIndexPath:NSIndexPath = self.tableView.indexPathForSelectedRow()!
 			var eventController:EventController = segue.destinationViewController as! EventController
 			eventController.TasksData = tasksList.objectAtIndex(selectedIndexPath.row) as! NSDictionary
-			
+			eventController.CategoryContainer = (CategoriesData.objectForKey("categoryTitle") as? String)!
 		}
 		else if (segue.identifier == "goToAddTask"){
 			var addTaskController:AddTaskController = segue.destinationViewController as! AddTaskController

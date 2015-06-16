@@ -21,14 +21,15 @@ class customViewCell: UITableViewCell {
 		return dateFormatter.stringFromDate(date)
 	}
 	
-	func configureCellWith(categoriesItem:NSDictionary){
+	func configureCellWith(categoriesItem:NSDictionary, categoryTotalTime:Int){
 		
 		customCategoryTitle.text = categoriesItem.objectForKey("categoryTitle") as? String
 		
 		customCategoryDate.text = dateformatterDate(categoriesItem.objectForKey("dateOfCatCreation") as! NSDate) as String
-		
+
+		var str = "\(categoryTotalTime)"
 		//customCategoryTime.text = categoriesItem.objectForKey("categoryTitle") as? String
-		customCategoryTime.text = categoriesItem.objectForKey("categoryTime") as? String
+		customCategoryTime.text = str
 
 	}
 	

@@ -12,7 +12,7 @@ import QuartzCore
 class EventController: UITableViewController {
 	
 	var TasksData:NSDictionary = NSDictionary()
-	
+	var CategoryContainer:String = String()
 	var TaskContainer:String = String()
 	
 	@IBOutlet var SessionTitle: UITextField! = UITextField()
@@ -129,9 +129,10 @@ class EventController: UITableViewController {
 		dataSet.setObject(SessionTitle.text, forKey: "sessionTitle")
 		dataSet.setObject(date, forKey: "dateOfSessionCreation")
 		dataSet.setObject(taskTitle!, forKey: "taskOfThisSession")
+		dataSet.setObject(CategoryContainer, forKey: "categoryOfThisSession")
 		dataSet.setObject(taskTime, forKey: "sessionTime")
 		
-		println(dataSet)
+
 		
 		
 		if ((sessionsList) != nil){	  // data already available
