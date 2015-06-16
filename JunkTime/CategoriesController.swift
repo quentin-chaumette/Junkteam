@@ -12,23 +12,23 @@ class CategoriesController: UITableViewController {
 	
 	var categoriesItems:NSMutableArray = NSMutableArray()
 	
-
+	
 	
 	override func viewDidAppear(animated: Bool) {			    // called every time the view appears ( different than viewDidLoad() wich is only at init)
 		var userDefaults:NSUserDefaults = NSUserDefaults.standardUserDefaults()
 		
 		var categoriesListFromUserDefaults:NSMutableArray? = userDefaults.objectForKey("categoryList") as? NSMutableArray
-	//	var itemListFromUserDefaults:NSMutableArray? = userDefaults.objectForKey("itemList") as? NSMutableArray
-//		var itemListFromUserDefaults:NSMutableArray? = userDefaults.objectForKey("categoryTitle") as? NSMutableArray
+		//	var itemListFromUserDefaults:NSMutableArray? = userDefaults.objectForKey("itemList") as? NSMutableArray
+		//		var itemListFromUserDefaults:NSMutableArray? = userDefaults.objectForKey("categoryTitle") as? NSMutableArray
 		var tasksListe:NSMutableArray? = userDefaults.objectForKey("tasksList") as? NSMutableArray
 		var sessionsListe:NSMutableArray? = userDefaults.objectForKey("sessionsList") as? NSMutableArray
-
-//		println("categoriesListFromUserDefaults")
-//		println(categoriesListFromUserDefaults)
-//		println("tasksListe")
-//		println(tasksListe)
-//		println("sessionsListe")
-//		println(sessionsListe)
+		
+		//		println("categoriesListFromUserDefaults")
+		//		println(categoriesListFromUserDefaults)
+		//		println("tasksListe")
+		//		println(tasksListe)
+		//		println("sessionsListe")
+		//		println(sessionsListe)
 		
 		if ((categoriesListFromUserDefaults) != nil){
 			categoriesItems = categoriesListFromUserDefaults!
@@ -43,7 +43,7 @@ class CategoriesController: UITableViewController {
 		// self.clearsSelectionOnViewWillAppear = false
 		
 		// Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-		// self.navigationItem.rightBarButtonItem = self.editButtonItem()
+		self.navigationItem.leftBarButtonItem = self.editButtonItem()
 	}
 	
 	override func didReceiveMemoryWarning() {
@@ -73,25 +73,25 @@ class CategoriesController: UITableViewController {
 	}
 	
 	
-	/*
+	
 	// Override to support conditional editing of the table view.
 	override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-	// Return NO if you do not want the specified item to be editable.
-	return true
+		// Return NO if you do not want the specified item to be editable.
+		return true
 	}
-	*/
 	
-	/*
+	
+	
 	// Override to support editing the table view.
 	override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-	if editingStyle == .Delete {
-	// Delete the row from the data source
-	tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-	} else if editingStyle == .Insert {
-	// Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
+		if editingStyle == .Delete {
+			categoriesItems.removeObjectAtIndex(indexPath.row)
+			tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+		} else if editingStyle == .Insert {
+			// Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
+		}
 	}
-	}
-	*/
+	
 	
 	/*
 	// Override to support rearranging the table view.
