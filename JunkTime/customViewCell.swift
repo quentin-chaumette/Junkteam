@@ -16,7 +16,7 @@ class customViewCell: UITableViewCell {
 
 	func dateformatterDate(date: NSDate) -> NSString{
 		var dateFormatter: NSDateFormatter = NSDateFormatter()
-		dateFormatter.dateFormat = "dd-MM-yyyy HH:mm"
+		dateFormatter.dateFormat = "dd-MM-yyyy"
 		dateFormatter.timeZone = NSTimeZone.localTimeZone()
 		return dateFormatter.stringFromDate(date)
 	}

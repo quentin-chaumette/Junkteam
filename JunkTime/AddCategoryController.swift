@@ -16,7 +16,8 @@ class AddCategoryController: UIViewController {
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		
+		var btn = UIBarButtonItem(title: "Back", style: .Plain, target: self, action: "backBtnClicked")
+		self.navigationController?.navigationBar.topItem?.backBarButtonItem=btn
 		// Do any additional setup after loading the view.
 	}
 	

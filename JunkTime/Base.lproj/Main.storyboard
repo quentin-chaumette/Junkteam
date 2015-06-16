@@ -38,7 +38,7 @@
             </objects>
             <point key="canvasLocation" x="-17" y="393"/>
         </scene>
-        <!--JunkTime Categories-->
+        <!--Categories-->
         <scene sceneID="VQt-19-pvl">
             <objects>
                 <tableViewController id="ZKs-ai-z6k" customClass="CategoriesController" customModule="JunkTime" customModuleProvider="target" sceneMemberID="viewController">
@@ -85,7 +85,7 @@
                             <outlet property="delegate" destination="ZKs-ai-z6k" id="Iou-W0-8hY"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="JunkTime Categories" id="tD2-y0-awX">
+                    <navigationItem key="navigationItem" title="Categories" id="tD2-y0-awX">
                         <barButtonItem key="leftBarButtonItem" systemItem="edit" id="rbd-o1-C2N"/>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="RnX-iI-eQe">
                             <connections>
@@ -99,7 +99,7 @@
             </objects>
             <point key="canvasLocation" x="1051" y="393"/>
         </scene>
-        <!--Add Category-->
+        <!--New category-->
         <scene sceneID="6y2-NQ-Cwc">
             <objects>
                 <viewController id="aZQ-b7-lew" customClass="AddCategoryController" customModule="JunkTime" customModuleProvider="target" sceneMemberID="viewController">
@@ -125,7 +125,7 @@
                         </subviews>
                         <color key="backgroundColor" red="0.0057937181959999999" green="0.0" blue="0.19085385099999999" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Add Category" id="SEC-jy-eMN">
+                    <navigationItem key="navigationItem" title="New category" id="SEC-jy-eMN">
                         <barButtonItem key="rightBarButtonItem" systemItem="done" id="EvX-uz-Qup">
                             <connections>
                                 <action selector="addButtonTapped:" destination="aZQ-b7-lew" id="8Jo-PV-nR1"/>
@@ -141,7 +141,7 @@
             </objects>
             <point key="canvasLocation" x="1542" y="15"/>
         </scene>
-        <!--Add Task-->
+        <!--New Task-->
         <scene sceneID="T0o-RB-Kx6">
             <objects>
                 <viewController id="a0v-40-nsr" customClass="AddTaskController" customModule="JunkTime" customModuleProvider="target" sceneMemberID="viewController">
@@ -161,7 +161,7 @@
                         </subviews>
                         <color key="backgroundColor" red="0.0057937181959999999" green="0.0" blue="0.19085385099999999" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Add Task" id="xTS-LV-TgV">
+                    <navigationItem key="navigationItem" title="New Task" id="xTS-LV-TgV">
                         <barButtonItem key="rightBarButtonItem" systemItem="done" id="TGQ-jJ-2OS">
                             <connections>
                                 <action selector="AddTaskButton:" destination="a0v-40-nsr" id="BVo-JR-MJY"/>
@@ -279,7 +279,7 @@
                                                 <action selector="startStopButtonPressed:" destination="12V-zG-86w" eventType="touchUpInside" id="6K2-gt-9wq"/>
                                             </connections>
                                         </button>
-                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="New Session" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Jxd-pn-dCS">
+                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="New Event" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Jxd-pn-dCS">
                                             <rect key="frame" x="32" y="32" width="257" height="30"/>
                                             <color key="backgroundColor" red="0.83961692610883965" green="0.82707409724589842" blue="0.85055634469696972" alpha="0.26000000000000001" colorSpace="calibratedRGB"/>
                                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -306,7 +306,7 @@
                                     <color key="textColor" red="1" green="0.0" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="7 sessions" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6tV-md-9Iu">
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="7 events" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6tV-md-9Iu">
                                     <rect key="frame" x="33" y="63" width="102" height="26"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>

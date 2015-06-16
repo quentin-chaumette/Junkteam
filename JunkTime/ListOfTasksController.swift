@@ -54,7 +54,8 @@ class ListOfTasksController: UITableViewController {
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		
+		var btn = UIBarButtonItem(title: "Back", style: .Plain, target: self, action: "backBtnClicked")
+		self.navigationController?.navigationBar.topItem?.backBarButtonItem=btn
 		 self.navigationItem.title = CategoriesData.objectForKey("categoryTitle") as? String
 	}
 	
