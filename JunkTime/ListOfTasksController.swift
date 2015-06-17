@@ -13,7 +13,7 @@ class ListOfTasksController: UITableViewController {
 	@IBOutlet var CategoryTitle: UILabel! = UILabel()
 	
 	var CategoriesData:NSDictionary = NSDictionary()
-	
+	var catTotalTime = 0
 	var tasksList:NSMutableArray = NSMutableArray()
 	
 	var tasksListNotFiltered:NSMutableArray = NSMutableArray()
@@ -27,6 +27,27 @@ class ListOfTasksController: UITableViewController {
 	override func viewDidAppear(animated: Bool) {
 		
 		var userDefaults:NSUserDefaults = NSUserDefaults.standardUserDefaults()
+
+		// ————––––––– CALCULATE TOTAL TIME OF CATEGORY ––––––––––––––
+		catTotalTime = 0
+		
+		if let abc = (userDefaults.objectForKey("sessionsList") as? NSMutableArray){
+			var sessionsList = userDefaults.objectForKey("sessionsList") as! NSMutableArray
+			var categoryTitle = CategoriesData.objectForKey("categoryTitle") as? String
+			
+			for session in  sessionsList{
+				var taskCategoryNotFiltered = session.objectForKey("categoryOfThisSession") as? String
+				
+				if (taskCategoryNotFiltered == categoryTitle){
+					catTotalTime += Int(session.objectForKey("sessionTime") as! CFTimeInterval)
+				}
+				else{	}
+			}
+		}
+		var str = "\(catTotalTime)"
+		categoryTotalTime.text = str
+		// ————––––––––————–––––––————–––––––————–––––––————–––––––————–––––––—––
+		
 		
 		var tasksListFromUserDefaults:NSMutableArray? = userDefaults.objectForKey("tasksList") as? NSMutableArray
 		
@@ -82,7 +103,7 @@ class ListOfTasksController: UITableViewController {
 		
 		var taskItem:NSDictionary = tasksList.objectAtIndex(indexPath.row) as! NSDictionary
 		
-		// ————––––––– CALCULATE TOTAL TIME OF CATEGORY ––––––––––––––
+		// ————––––––– CALCULATE TOTAL TIME OF TASK ––––––––––––––
 		taskTotalTime = 0
 		var userDefaults:NSUserDefaults = NSUserDefaults.standardUserDefaults()
 		
