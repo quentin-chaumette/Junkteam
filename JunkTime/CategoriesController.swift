@@ -10,11 +10,14 @@ import UIKit
 
 class CategoriesController: UITableViewController {
 	
+	
 	var categoriesItems:NSMutableArray = NSMutableArray()
 	var categoryTotalTime = 0
 	var sessionsList:NSMutableArray=NSMutableArray()
 	
 	override func viewDidAppear(animated: Bool) {			    // called every time the view appears ( different than viewDidLoad() wich is only at init)
+
+		
 		var userDefaults:NSUserDefaults = NSUserDefaults.standardUserDefaults()
 		
 		var categoriesListFromUserDefaults:NSMutableArray? = userDefaults.objectForKey("categoryList") as? NSMutableArray
@@ -71,7 +74,7 @@ class CategoriesController: UITableViewController {
 		}
 		// ————––––––––————–––––––————–––––––————–––––––————–––––––————–––––––—––
 		
-		cell.configureCellWith(categoriesItem, categoryTotalTime: categoryTotalTime)
+		cell.configureCellWith(categoriesItem, totalTime: categoryTotalTime)
 		
 		return cell
 	}

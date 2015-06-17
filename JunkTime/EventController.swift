@@ -18,7 +18,9 @@ class EventController: UITableViewController {
 	@IBOutlet var numberOfEvents: UILabel!
 	
 	@IBOutlet var totalTimeOfThisTask: UILabel!
-		var taskTotalTime = 0
+	
+	var taskTotalTime = 0
+	
 	@IBOutlet var taskDateOfCreation: UILabel!
 	
 	@IBOutlet var SessionTitle: UITextField! = UITextField()
@@ -88,11 +90,19 @@ class EventController: UITableViewController {
 		var sessionsListReversed:NSMutableArray =  NSMutableArray(array: sessionsList.reverseObjectEnumerator().allObjects).mutableCopy() as! NSMutableArray
 		sessionsList = sessionsListReversed
 		
+	var date = dateformatterDate(TasksData.objectForKey("dateOfTaskCreation") as! NSDate) as String
+		taskDateOfCreation.text = "since " + date
+		
 		
 		self.tableView.reloadData()
 	}
 	
-	
+	func dateformatterDate(date: NSDate) -> NSString{
+		var dateFormatter: NSDateFormatter = NSDateFormatter()
+		dateFormatter.dateFormat = "dd-MM-yyyy"
+		dateFormatter.timeZone = NSTimeZone.localTimeZone()
+		return dateFormatter.stringFromDate(date)
+	}
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -212,7 +222,11 @@ class EventController: UITableViewController {
 	}
 	
 	override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-		return sessionsList.count
+		
+		var nb = sessionsList.count
+		numberOfEvents.text = String(nb) + " events"
+		
+		return nb
 	}
 	
 	override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -225,7 +239,7 @@ class EventController: UITableViewController {
 		return cell
 	}
 	
-	
+	/*
 	// Override to support conditional editing of the table view.
 	override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
 		// Return NO if you do not want the specified item to be editable.
@@ -265,7 +279,7 @@ class EventController: UITableViewController {
 			// Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
 		}
 	}
-	
+	*/
 	
 	/*
 	// Override to support rearranging the table view.

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		9A139CF01B2D773E00CFC7A7 /* EventController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A139CEF1B2D773E00CFC7A7 /* EventController.swift */; };
+		9A38C9581B321DED00B36BFD /* TimeFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A38C9571B321DED00B36BFD /* TimeFormatter.swift */; };
 		9A4E128A1B2E4A9A0039C0AD /* customTasksViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A4E12891B2E4A9A0039C0AD /* customTasksViewCell.swift */; };
 		9A8067611B2DE40300A1C8AE /* customViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A8067601B2DE40300A1C8AE /* customViewCell.swift */; };
 		9AA62AFE1B2E3CEB006B28F6 /* customSessionsViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AA62AFD1B2E3CEB006B28F6 /* customSessionsViewCell.swift */; };
@@ -35,6 +36,7 @@
 
 /* Begin PBXFileReference section */
 		9A139CEF1B2D773E00CFC7A7 /* EventController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventController.swift; sourceTree = "<group>"; };
+		9A38C9571B321DED00B36BFD /* TimeFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeFormatter.swift; sourceTree = "<group>"; };
 		9A4E12891B2E4A9A0039C0AD /* customTasksViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = customTasksViewCell.swift; sourceTree = "<group>"; };
 		9A8067601B2DE40300A1C8AE /* customViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = customViewCell.swift; sourceTree = "<group>"; };
 		9AA62AFD1B2E3CEB006B28F6 /* customSessionsViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = customSessionsViewCell.swift; sourceTree = "<group>"; };
@@ -93,6 +95,7 @@
 		9AE8EECF1B20BE970031CAA4 /* JunkTime */ = {
 			isa = PBXGroup;
 			children = (
+				9A38C9571B321DED00B36BFD /* TimeFormatter.swift */,
 				9AE8EED21B20BE970031CAA4 /* AppDelegate.swift */,
 				9A8067601B2DE40300A1C8AE /* customViewCell.swift */,
 				9ACEEDFF1B27973700550803 /* CategoriesController.swift */,
@@ -247,6 +250,7 @@
 				9AE8EED31B20BE970031CAA4 /* AppDelegate.swift in Sources */,
 				9ACEEE021B2797B800550803 /* AddCategoryController.swift in Sources */,
 				9A139CF01B2D773E00CFC7A7 /* EventController.swift in Sources */,
+				9A38C9581B321DED00B36BFD /* TimeFormatter.swift in Sources */,
 				9A4E128A1B2E4A9A0039C0AD /* customTasksViewCell.swift in Sources */,
 				9A8067611B2DE40300A1C8AE /* customViewCell.swift in Sources */,
 				9AA62AFE1B2E3CEB006B28F6 /* customSessionsViewCell.swift in Sources */,
