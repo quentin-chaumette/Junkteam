@@ -158,6 +158,10 @@ class EventController: UITableViewController {
 	}
 	
 	@IBAction func saveButtonPressed(sender: AnyObject) {
+        if(SessionTitle.text.isEmpty) {
+            println("error")
+            
+        } else {
 		
 		var taskTitle = TasksData.objectForKey("taskTitle") as? String
 		var userDefaults:NSUserDefaults = NSUserDefaults.standardUserDefaults()
@@ -199,6 +203,7 @@ class EventController: UITableViewController {
 		
 		userDefaults.synchronize()
 		viewDidAppear(true)
+        }
 	}
 	
 	func displayLinkUpdate(sender: CADisplayLink) {
