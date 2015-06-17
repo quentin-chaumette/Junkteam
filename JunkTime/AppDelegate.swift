@@ -16,17 +16,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 	func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
 		// Override point for customization after application launch.
+        [NSThread .sleepForTimeInterval(NSTimeInterval(1))];
+        
 		UIApplication.sharedApplication().statusBarStyle = UIStatusBarStyle.LightContent
 		
-		let myRedColor = UIColor(red: 235/255, green: 0/255, blue: 40/255, alpha: 1)
+		let myRedColor = UIColor(red: 251/255, green: 207/255, blue: 98/255, alpha: 1)
 		
 		var navigationBarAppearace = UINavigationBar.appearance()
 		
 		navigationBarAppearace.barTintColor = myRedColor
 		navigationBarAppearace.tintColor = UIColor.whiteColor()
 		UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName:UIColor.whiteColor()]
+        
+        return true
+
 		
-		return true
 	}
 
 	func applicationWillResignActive(application: UIApplication) {
@@ -50,6 +54,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 	func applicationWillTerminate(application: UIApplication) {
 		// Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 	}
+
 
 
 }
