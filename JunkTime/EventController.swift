@@ -245,7 +245,7 @@ class EventController: UITableViewController {
 		return cell
 	}
 	
-	/*
+	
 	// Override to support conditional editing of the table view.
 	override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
 		// Return NO if you do not want the specified item to be editable.
@@ -261,7 +261,7 @@ class EventController: UITableViewController {
 			var sessionsListFromUserDefaults:NSMutableArray = userDefaults.objectForKey("sessionsList") as! NSMutableArray
 			var sessionsListReversed:NSMutableArray =  NSMutableArray(array: sessionsList.reverseObjectEnumerator().allObjects).mutableCopy() as! NSMutableArray
 			var objectToDelete=sessionsListReversed.objectAtIndex(indexPath.row) as! NSDictionary
-			
+			/*
 			// –––––––––––– DELETE TASK IN USER DEFAULTS ––––––––––––––––––
 			for session in  sessionsListFromUserDefaults{
 				var sessionRecordedDate = session.objectForKey("dateOfSessionCreation") as! NSDate
@@ -278,14 +278,14 @@ class EventController: UITableViewController {
 			userDefaults.removeObjectForKey("sessionsList")
 			userDefaults.setObject(sessionsListFromUserDefaults, forKey: "sessionsList")
 			userDefaults.synchronize()
-			
+			*/
 			sessionsList.removeObjectAtIndex(indexPath.row)
 			tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
 		} else if editingStyle == .Insert {
 			// Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
 		}
 	}
-	*/
+
 	
 	/*
 	// Override to support rearranging the table view.
