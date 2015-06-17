@@ -124,6 +124,31 @@ class ListOfTasksController: UITableViewController {
 			var tasksListFromUserDefaults:NSMutableArray = userDefaults.objectForKey("tasksList") as! NSMutableArray
 			var sessionsListFromUserDefaults:NSMutableArray = userDefaults.objectForKey("sessionsList") as! NSMutableArray
 			var objectToDelete=tasksList.objectAtIndex(indexPath.row) as! NSDictionary
+	
+			
+// –––––––––––– DELETE THE SESSIONS OF THE DELETED TASK ––––––––––––––––––
+			for session in  sessionsListFromUserDefaults{
+				var taskOfRecordedSession = session.objectForKey("taskOfThisSession") as! String
+				var taskToDelete = objectToDelete.objectForKey("taskTitle") as! String
+				var categoryOfRecordedSession = session.objectForKey("categoryOfThisSession") as! String
+				var categoryOfTaskToDelete = objectToDelete.objectForKey("categoryOfThisTask") as! String
+
+				println("that session in the for = = = = = = = = = ")
+				println(session)
+				
+				if (taskOfRecordedSession == taskToDelete && categoryOfRecordedSession == categoryOfTaskToDelete){
+					// will not be added in the new list that replace the old one
+					println("that session to delete !! ")
+					sessionsListFromUserDefaults.removeObject(session)
+
+				}
+				else{
+					println("ELSE ")
+				}
+			}
+			userDefaults.removeObjectForKey("sessionsList")
+			userDefaults.setObject(sessionsListFromUserDefaults, forKey: "sessionsList")
+			userDefaults.synchronize()
 			
 // –––––––––––– DELETE TASK IN USER DEFAULTS ––––––––––––––––––
 			for task in  tasksListFromUserDefaults{
@@ -143,25 +168,7 @@ class ListOfTasksController: UITableViewController {
 				}
 			}
 
-// –––––––––––– DELETE THE SESSIONS OF THE DELETED TASK ––––––––––––––––––
-			for session in  sessionsListFromUserDefaults{
-				var taskOfRecordedSession = session.objectForKey("taskOfThisSession") as! String
-				var taskToDelete = objectToDelete.objectForKey("taskTitle") as! String
-				var categoryOfRecordedSession = session.objectForKey("categoryOfThisSession") as! String
-				var categoryOfTaskToDelete = objectToDelete.objectForKey("categoryOfThisTask") as! String
-				
-				if (taskOfRecordedSession == taskToDelete && categoryOfRecordedSession == categoryOfTaskToDelete){
-					// will not be added in the new list that replace the old one
-					println("that session to delete !! ")
-					sessionsListFromUserDefaults.removeObject(session)
-					userDefaults.removeObjectForKey("sessionsList")
-					userDefaults.setObject(sessionsListFromUserDefaults, forKey: "sessionsList")
-					userDefaults.synchronize()
-				}
-				else{
-					println("ELSE ")
-				}
-			}
+
 // ––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
 			
 			tasksList.removeObjectAtIndex(indexPath.row)
