@@ -147,7 +147,7 @@ class ListOfTasksController: UITableViewController {
 			var sessionsListFromUserDefaults:NSMutableArray = userDefaults.objectForKey("sessionsList") as! NSMutableArray
 			var objectToDelete=tasksList.objectAtIndex(indexPath.row) as! NSDictionary
 	
-			
+			/*
 // –––––––––––– DELETE THE SESSIONS OF THE DELETED TASK ––––––––––––––––––
 			for session in  sessionsListFromUserDefaults{
 				var taskOfRecordedSession = session.objectForKey("taskOfThisSession") as! String
@@ -192,7 +192,7 @@ class ListOfTasksController: UITableViewController {
 
 
 // ––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
-			
+		*/
 			tasksList.removeObjectAtIndex(indexPath.row)
 			tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
 		} else if editingStyle == .Insert {
