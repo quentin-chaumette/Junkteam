@@ -18,17 +18,19 @@ class EventController: UITableViewController {
 	@IBOutlet var numberOfEvents: UILabel!
 	
 	@IBOutlet var totalTimeOfThisTask: UILabel!
-	
+		var taskTotalTime = 0
 	@IBOutlet var taskDateOfCreation: UILabel!
 	
 	@IBOutlet var SessionTitle: UITextField! = UITextField()
 	
 	var sessionsList:NSMutableArray = NSMutableArray()
 	
+	
+	
 	var sessionsListNotFiltered:NSMutableArray = NSMutableArray()
-
+	
 	// –––– CHRONO–––
-	@IBOutlet var startStopButton: UIButton!	
+	@IBOutlet var startStopButton: UIButton!
 	@IBOutlet var saveButton: UIButton!
 	@IBOutlet var numericDisplay: UILabel!
 	var displayLink: CADisplayLink!
@@ -38,6 +40,28 @@ class EventController: UITableViewController {
 	override func viewDidAppear(animated: Bool) {
 		
 		var userDefaults:NSUserDefaults = NSUserDefaults.standardUserDefaults()
+
+		// ————––––––– CALCULATE TOTAL TIME OF TASK ––––––––––––––
+		taskTotalTime = 0
+		
+		
+		if let abc = (userDefaults.objectForKey("sessionsList") as? NSMutableArray){
+			sessionsList = userDefaults.objectForKey("sessionsList") as! NSMutableArray
+			var taskTitle = TasksData.objectForKey("taskTitle") as? String
+			
+			for session in  sessionsList{
+				var taskOfThisSession = session.objectForKey("taskOfThisSession") as? String
+				
+				if (taskOfThisSession == taskTitle){
+					taskTotalTime += Int(session.objectForKey("sessionTime") as! CFTimeInterval)
+				}
+				else{	}
+			}
+		}
+		var str = "\(taskTotalTime)"
+		totalTimeOfThisTask.text = str
+		// ————––––––––————–––––––————–––––––————–––––––————–––––––————–––––––—––
+		
 		
 		var sessionsListFromUserDefaults:NSMutableArray? = userDefaults.objectForKey("sessionsList") as? NSMutableArray
 		
@@ -51,7 +75,7 @@ class EventController: UITableViewController {
 		
 		var thisTask = TasksData.objectForKey("taskTitle") as? String
 		var thisCategory = TasksData.objectForKey("categoryOfThisTask") as? String
-			
+		
 		for session in sessionsListNotFiltered {
 			var taskOfThisSession = session.objectForKey("taskOfThisSession") as? String
 			var categoryOfThisSession = session.objectForKey("categoryOfThisSession") as? String
@@ -60,13 +84,13 @@ class EventController: UITableViewController {
 				sessionsList.addObject(session)										  // we create a new list of filtered tasks (wich belong to the category)
 			}
 		}
-		// ————––––––––————–––––––————–––––––————–––––––————–––––––————–––––––—––
+		// ————––––––––————–––––––————–––––––————–––––––————–––––––————–––––––—–
+		var sessionsListReversed:NSMutableArray =  NSMutableArray(array: sessionsList.reverseObjectEnumerator().allObjects).mutableCopy() as! NSMutableArray
+		sessionsList = sessionsListReversed
+		
 		
 		self.tableView.reloadData()
 	}
-	
-	
-	
 	
 	
 	
@@ -131,17 +155,12 @@ class EventController: UITableViewController {
 		var dataSet:NSMutableDictionary = NSMutableDictionary()
 		let date = NSDate()
 		var taskTime = lastDisplayLinkTimeStamp
-
-		
 		
 		dataSet.setObject(SessionTitle.text, forKey: "sessionTitle")
 		dataSet.setObject(date, forKey: "dateOfSessionCreation")
 		dataSet.setObject(taskTitle!, forKey: "taskOfThisSession")
 		dataSet.setObject(CategoryContainer, forKey: "categoryOfThisSession")
 		dataSet.setObject(taskTime, forKey: "sessionTime")
-		
-
-		
 		
 		if ((sessionsList) != nil){	  // data already available
 			var newMutableList:NSMutableArray = NSMutableArray()
@@ -160,13 +179,13 @@ class EventController: UITableViewController {
 		}
 		
 		SessionTitle.text = "";	    // clear text field to show that the session is saved
-//––––– CHRONO –––––
+		//––––– CHRONO –––––
 		self.displayLink.paused = true
 		self.numericDisplay.text = "0,00"
 		self.startStopButton.setTitle("Start", forState: UIControlState.Normal)
 		
 		self.lastDisplayLinkTimeStamp = CFTimeInterval()
-//–––––––––––––––––––
+		//–––––––––––––––––––
 		
 		userDefaults.synchronize()
 		viewDidAppear(true)
@@ -209,8 +228,8 @@ class EventController: UITableViewController {
 	
 	// Override to support conditional editing of the table view.
 	override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-	// Return NO if you do not want the specified item to be editable.
-	return true
+		// Return NO if you do not want the specified item to be editable.
+		return true
 	}
 	
 	
@@ -220,7 +239,8 @@ class EventController: UITableViewController {
 		if editingStyle == .Delete {
 			var userDefaults:NSUserDefaults = NSUserDefaults.standardUserDefaults()
 			var sessionsListFromUserDefaults:NSMutableArray = userDefaults.objectForKey("sessionsList") as! NSMutableArray
-			var objectToDelete=sessionsList.objectAtIndex(indexPath.row) as! NSDictionary
+			var sessionsListReversed:NSMutableArray =  NSMutableArray(array: sessionsList.reverseObjectEnumerator().allObjects).mutableCopy() as! NSMutableArray
+			var objectToDelete=sessionsListReversed.objectAtIndex(indexPath.row) as! NSDictionary
 			
 			// –––––––––––– DELETE TASK IN USER DEFAULTS ––––––––––––––––––
 			for session in  sessionsListFromUserDefaults{
@@ -229,15 +249,12 @@ class EventController: UITableViewController {
 				
 				if (sessionRecordedDate == sessionToDeleteDate){
 					// will not be added in the new list that replace the old one
-					println("that session to delete !! ")
 					sessionsListFromUserDefaults.removeObject(session)
-
 				}
 				else{
-					println("ELSE ")
 				}
 			}
-
+			
 			userDefaults.removeObjectForKey("sessionsList")
 			userDefaults.setObject(sessionsListFromUserDefaults, forKey: "sessionsList")
 			userDefaults.synchronize()
