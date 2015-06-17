@@ -12,30 +12,36 @@ class TimeFormatter: UIView {
 	
 	class func cleanTimeFormat(theTime:Int)-> String{
 		
-//		var seconds = theTime
-		var seconds = 63
+		var seconds = theTime
+
 		var affichage:String=String()
 		
 		if (theTime<1){
-			affichage = "00:00:00";
+			affichage = "00:00:00"
 		}
 		else{
 			var days = seconds/60/60/24
 			var hours = seconds/60/60
 			var minutes = seconds/60
 			
-			if(minutes<1){                      // si pas de minute, affichage en secondes :
-				affichage = "" + "\(seconds)" + "s";
+			if(minutes<1){
+				affichage = "\(seconds)" + "s"
 			}
 			else{
-				if(hours<1){		  // si moins d'une heure, min + secondes
-					minutes = minutes-60*hours;
+				if(hours<1){
 					seconds = seconds-60*minutes
-					affichage = "" + "\(minutes)" + "h" + "\(seconds)"+"s";
+					affichage = "\(minutes)" + "m " + "\(seconds)"+"s"
 				}
-				else{			        // si plus d'une heure, heure + min + secondes
-					hours=hours-24*days;
-					affichage = "" + "\(days)" + "j";
+				else{
+					seconds = seconds-60*minutes
+					minutes = minutes-60*hours
+					hours = hours-24*days
+					if(days<1){
+						affichage = "\(hours)" + "h " + "\(minutes)" + "m " + "\(seconds)"+"s"
+					}
+					else{
+						affichage = "\(days)" + "d " + "\(hours)" + "h " + "\(minutes)" + "m " + "\(seconds)"+"s"
+					}
 				}
 			}
 		}
