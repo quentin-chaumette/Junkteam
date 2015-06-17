@@ -60,8 +60,9 @@ class EventController: UITableViewController {
 				else{	}
 			}
 		}
-		var str = "\(taskTotalTime)"
-		totalTimeOfThisTask.text = str
+
+		
+		totalTimeOfThisTask.text = TimeFormatter.cleanTimeFormat(taskTotalTime)
 		// ————––––––––————–––––––————–––––––————–––––––————–––––––————–––––––—––
 		
 		

@@ -27,8 +27,9 @@ class customTasksViewCell: UITableViewCell {
 		
 		customTaskDate.text = dateformatterDate(taskItem.objectForKey("dateOfTaskCreation") as! NSDate) as String
 		
-		var str = "\(taskTotalTime)"		
-		customTaskTime.text = str
+		
+		
+		customTaskTime.text = TimeFormatter.cleanTimeFormat(taskTotalTime)
 		
 	}
 	

@@ -28,7 +28,10 @@ class customSessionsViewCell: UITableViewCell {
 		customSessionDate.text = dateformatterDate(sessionHere.objectForKey("dateOfSessionCreation") as! NSDate) as String
 
 		var sessionTime = sessionHere.objectForKey("sessionTime") as! CFTimeInterval
-		customSessionTime.text = String(format:"%.1f", sessionTime)
+		
+		var totalTime = TimeFormatter.cleanTimeFormat(Int(sessionTime))
+		
+		customSessionTime.text = totalTime
 		
 		
 	}

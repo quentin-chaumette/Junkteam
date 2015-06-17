@@ -44,8 +44,9 @@ class ListOfTasksController: UITableViewController {
 				else{	}
 			}
 		}
-		var str = "\(catTotalTime)"
-		categoryTotalTime.text = str
+
+		
+		categoryTotalTime.text = TimeFormatter.cleanTimeFormat(catTotalTime)
 		// ————––––––––————–––––––————–––––––————–––––––————–––––––————–––––––—––
 		
 		
