@@ -160,7 +160,7 @@ class EventController: UITableViewController {
 	
 	@IBAction func saveButtonPressed(sender: AnyObject) {
         if(SessionTitle.text.isEmpty) {
-            println("error")
+            println("You must enter a session name")
             
         } else {
 		
