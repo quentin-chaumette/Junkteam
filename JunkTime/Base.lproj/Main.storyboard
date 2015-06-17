@@ -32,13 +32,16 @@
                                             <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="CategoryTime" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hgU-jw-QWg">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="CategoryTime" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hgU-jw-QWg">
                                             <rect key="frame" x="166" y="25" width="121" height="33"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" red="1" green="0.20000000000000001" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="trailingMargin" secondItem="hgU-jw-QWg" secondAttribute="trailing" constant="10" id="mR7-Ge-jkh"/>
+                                    </constraints>
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="customCategoryDate" destination="uja-t8-ZBW" id="mOS-N6-WAT"/>
@@ -65,7 +68,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="H9z-S6-D5j" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1051" y="393"/>
+            <point key="canvasLocation" x="1057" y="393"/>
         </scene>
         <!--New category-->
         <scene sceneID="6y2-NQ-Cwc">
@@ -79,26 +82,37 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="My New Category" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="BMf-HS-PdO">
-                                <rect key="frame" x="16" y="126" width="288" height="30"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="My New Category" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="BMf-HS-PdO">
+                                <rect key="frame" x="16" y="214" width="288" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="78k-OG-jcI">
+                                <rect key="frame" x="110" y="294" width="100" height="35"/>
+                                <color key="backgroundColor" red="1" green="0.87612225980000003" blue="0.54556843990000004" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="35" id="lum-hV-Mkt"/>
+                                    <constraint firstAttribute="width" constant="100" id="vMG-os-PWH"/>
+                                </constraints>
+                                <state key="normal" title="Create">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="addButtonTapped:" destination="aZQ-b7-lew" eventType="touchUpInside" id="RtZ-Pj-cS5"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="BMf-HS-PdO" firstAttribute="top" secondItem="mVG-X0-DRk" secondAttribute="bottom" constant="150" id="Aei-cM-uPg"/>
+                            <constraint firstAttribute="centerX" secondItem="78k-OG-jcI" secondAttribute="centerX" id="BN3-qM-T3d"/>
+                            <constraint firstItem="78k-OG-jcI" firstAttribute="top" secondItem="BMf-HS-PdO" secondAttribute="bottom" constant="50" id="QMl-gS-Edt"/>
                             <constraint firstItem="BMf-HS-PdO" firstAttribute="leading" secondItem="G4X-Mz-ArH" secondAttribute="leadingMargin" id="Scd-2N-tc7"/>
                             <constraint firstItem="BMf-HS-PdO" firstAttribute="trailing" secondItem="G4X-Mz-ArH" secondAttribute="trailingMargin" id="XL2-eP-FBl"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="New category" id="SEC-jy-eMN">
-                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="EvX-uz-Qup">
-                            <connections>
-                                <action selector="addButtonTapped:" destination="aZQ-b7-lew" id="8Jo-PV-nR1"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="New category" id="SEC-jy-eMN"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
                         <outlet property="titleTextField" destination="BMf-HS-PdO" id="l3K-sQ-A5o"/>
@@ -108,7 +122,7 @@
             </objects>
             <point key="canvasLocation" x="1542" y="15"/>
         </scene>
-        <!--New Task-->
+        <!--New Event-->
         <scene sceneID="T0o-RB-Kx6">
             <objects>
                 <viewController id="a0v-40-nsr" customClass="AddTaskController" customModule="JunkTime" customModuleProvider="target" sceneMemberID="viewController">
@@ -120,21 +134,38 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="My New Task" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="asO-d1-nbX">
-                                <rect key="frame" x="16" y="105" width="288" height="30"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="My New Task" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="asO-d1-nbX">
+                                <rect key="frame" x="16" y="214" width="288" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yjg-aW-dhD">
+                                <rect key="frame" x="110" y="294" width="100" height="35"/>
+                                <color key="backgroundColor" red="1" green="0.87612225980000003" blue="0.54556843990000004" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="100" id="Ueo-Id-utO"/>
+                                    <constraint firstAttribute="height" constant="35" id="jCa-Fu-ouk"/>
+                                </constraints>
+                                <state key="normal" title="Create">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="AddTaskButton:" destination="a0v-40-nsr" eventType="touchUpInside" id="Qax-CI-dBp"/>
+                                    <action selector="addButtonTapped:" destination="aZQ-b7-lew" eventType="touchUpInside" id="asy-ZZ-L2G"/>
+                                </connections>
+                            </button>
                         </subviews>
-                        <color key="backgroundColor" red="0.0057937181959999999" green="0.0" blue="0.19085385099999999" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Yjg-aW-dhD" firstAttribute="top" secondItem="asO-d1-nbX" secondAttribute="bottom" constant="50" id="EEO-HG-OsD"/>
+                            <constraint firstItem="asO-d1-nbX" firstAttribute="top" secondItem="IAk-vs-jz2" secondAttribute="bottom" constant="150" id="IyJ-kF-Zwy"/>
+                            <constraint firstItem="asO-d1-nbX" firstAttribute="trailing" secondItem="2eK-Yv-2fI" secondAttribute="trailingMargin" id="b7D-I5-I16"/>
+                            <constraint firstItem="asO-d1-nbX" firstAttribute="leading" secondItem="2eK-Yv-2fI" secondAttribute="leadingMargin" id="dau-z9-uMi"/>
+                            <constraint firstAttribute="centerX" secondItem="Yjg-aW-dhD" secondAttribute="centerX" id="hvU-Vx-I0v"/>
+                        </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="New Task" id="xTS-LV-TgV">
-                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="TGQ-jJ-2OS">
-                            <connections>
-                                <action selector="AddTaskButton:" destination="a0v-40-nsr" id="BVo-JR-MJY"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="New Event" id="xTS-LV-TgV"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
                         <outlet property="taskTitle" destination="asO-d1-nbX" id="Yey-RI-iQm"/>
