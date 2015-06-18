@@ -14,18 +14,13 @@ class customViewCell: UITableViewCell {
 	@IBOutlet var customCategoryDate: UILabel! = UILabel()
 	@IBOutlet var customCategoryTime: UILabel! = UILabel()
 
-	func dateformatterDate(date: NSDate) -> NSString{
-		var dateFormatter: NSDateFormatter = NSDateFormatter()
-		dateFormatter.dateFormat = "dd-MM-yyyy"
-		dateFormatter.timeZone = NSTimeZone.localTimeZone()
-		return dateFormatter.stringFromDate(date)
-	}
+
 	
 	func configureCellWith(categoriesItem:NSDictionary, totalTime:Int){
 		
 		customCategoryTitle.text = categoriesItem.objectForKey("categoryTitle") as? String
 		
-		customCategoryDate.text = dateformatterDate(categoriesItem.objectForKey("dateOfCatCreation") as! NSDate) as String
+		customCategoryDate.text = TimeFormatter.dateformatterDate(categoriesItem.objectForKey("dateOfCatCreation") as! NSDate) as String
 
 		var totalTime = TimeFormatter.cleanTimeFormat(totalTime)
 		

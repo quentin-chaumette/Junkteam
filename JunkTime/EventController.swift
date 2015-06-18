@@ -228,9 +228,12 @@ class EventController: UITableViewController {
 	}
 	
 	override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-		
+		var eventString:String = "event"
 		var nb = sessionsList.count
-		numberOfEvents.text = String(nb) + " events"
+		if (nb>1){
+			eventString = "events"
+		}
+		numberOfEvents.text = String(nb) + eventString
 		
 		return nb
 	}

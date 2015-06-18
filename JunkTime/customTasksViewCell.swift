@@ -14,20 +14,13 @@ class customTasksViewCell: UITableViewCell {
 	@IBOutlet var customTaskDate: UILabel! = UILabel()
 	@IBOutlet var customTaskTime: UILabel! = UILabel()
 	
-	func dateformatterDate(date: NSDate) -> NSString{
-		var dateFormatter: NSDateFormatter = NSDateFormatter()
-		dateFormatter.dateFormat = "dd-MM-yyyy HH:mm"
-		dateFormatter.timeZone = NSTimeZone.localTimeZone()
-		return dateFormatter.stringFromDate(date)
-	}
+
 	
 	func configureCellWith(taskItem:NSDictionary, taskTotalTime:Int){
 		
 		customTaskTitle.text = taskItem.objectForKey("taskTitle") as? String
 		
-		customTaskDate.text = dateformatterDate(taskItem.objectForKey("dateOfTaskCreation") as! NSDate) as String
-		
-		
+		customTaskDate.text = TimeFormatter.dateformatterDateAndHour(taskItem.objectForKey("dateOfTaskCreation") as! NSDate) as String
 		
 		customTaskTime.text = TimeFormatter.cleanTimeFormat(taskTotalTime)
 		

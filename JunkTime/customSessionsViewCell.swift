@@ -14,25 +14,19 @@ class customSessionsViewCell: UITableViewCell {
 	@IBOutlet var customSessionDate: UILabel! = UILabel()
 	@IBOutlet var customSessionTime: UILabel! = UILabel()
 	
-	func dateformatterDate(date: NSDate) -> NSString{
-		var dateFormatter: NSDateFormatter = NSDateFormatter()
-		dateFormatter.dateFormat = "dd-MM-yyyy HH:mm"
-		dateFormatter.timeZone = NSTimeZone.localTimeZone()
-		return dateFormatter.stringFromDate(date)
-	}
+
 	
 	func configureCellWith(sessionHere:NSDictionary){
 		
 		customSessionTitle.text = sessionHere.objectForKey("sessionTitle") as? String
 		
-		customSessionDate.text = dateformatterDate(sessionHere.objectForKey("dateOfSessionCreation") as! NSDate) as String
+		customSessionDate.text = TimeFormatter.dateformatterDateAndHour(sessionHere.objectForKey("dateOfSessionCreation") as! NSDate) as String
 
 		var sessionTime = sessionHere.objectForKey("sessionTime") as! CFTimeInterval
 		
 		var totalTime = TimeFormatter.cleanTimeFormat(Int(sessionTime))
 		
 		customSessionTime.text = totalTime
-		
 		
 	}
 }

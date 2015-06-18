@@ -49,4 +49,18 @@ class TimeFormatter: UIView {
 		return affichage
 	}
 	
+	class func dateformatterDateAndHour(date: NSDate) -> NSString{
+		var dateFormatter: NSDateFormatter = NSDateFormatter()
+		dateFormatter.dateFormat = "dd-MM-yyyy HH:mm"
+		dateFormatter.timeZone = NSTimeZone.localTimeZone()
+		return dateFormatter.stringFromDate(date)
+	}
+	
+	class func dateformatterDate(date: NSDate) -> NSString{
+		var dateFormatter: NSDateFormatter = NSDateFormatter()
+		dateFormatter.dateFormat = "dd-MM-yyyy"
+		dateFormatter.timeZone = NSTimeZone.localTimeZone()
+		return dateFormatter.stringFromDate(date)
+	}
+	
 }

@@ -16,14 +16,14 @@ class CategoriesController: UITableViewController {
 	var sessionsList:NSMutableArray=NSMutableArray()
 	
 	override func viewDidAppear(animated: Bool) {			    // called every time the view appears ( different than viewDidLoad() wich is only at init)
-
+		
 		
 		var userDefaults:NSUserDefaults = NSUserDefaults.standardUserDefaults()
 		
 		var categoriesListFromUserDefaults:NSMutableArray? = userDefaults.objectForKey("categoryList") as? NSMutableArray
 		
 		var sessionsList:NSMutableArray? = userDefaults.objectForKey("sessionsList") as? NSMutableArray
-	
+		
 		var tasksList:NSMutableArray? = userDefaults.objectForKey("tasksList") as? NSMutableArray
 		
 		if ((categoriesListFromUserDefaults) != nil){
@@ -88,6 +88,14 @@ class CategoriesController: UITableViewController {
 	// Override to support editing the table view.
 	override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
 		if editingStyle == .Delete {
+			/*
+			var userDefaults:NSUserDefaults = NSUserDefaults.standardUserDefaults()
+			var categoriesListFromUserDefaults:NSMutableArray = userDefaults.objectForKey("categoryList") as! NSMutableArray			
+			
+			categoriesListFromUserDefaults.removeObjectAtIndex(indexPath.row)
+			userDefaults.removeObjectForKey("categoryList")
+			userDefaults.setObject(categoriesListFromUserDefaults, forKey: "categoryList")
+			userDefaults.synchronize()*/
 			categoriesItems.removeObjectAtIndex(indexPath.row)
 			tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
 		} else if editingStyle == .Insert {
@@ -101,7 +109,7 @@ class CategoriesController: UITableViewController {
 	
 	}
 	*/
-
+	
 	/*
 	// Override to support conditional rearranging of the table view.
 	override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
